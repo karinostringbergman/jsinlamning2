@@ -354,9 +354,14 @@ function createResultElement(title, description) {
     const header = document.createElement("header");
     const body = document.createElement("div");
 
+    //satt element
+    article.setAttribute('class', 'search-result');
+    header.setAttribute('class', 'search-result-header');
+    body.setAttribute('class', 'search-result-body');
+
     // lagg in varde fran argument i elementet
-    header.innerText = title;
-    body.innerText = description;
+    header.innerHTML = title;
+    body.innerHTML = description;
 
     // lagger in element i foralder
     article.appendChild(header);
