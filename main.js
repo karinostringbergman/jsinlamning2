@@ -354,7 +354,7 @@ function createResultElement(title, description) {
     const header = document.createElement("header");
     const body = document.createElement("div");
 
-    //satt element
+    //satt class pa element
     article.setAttribute('class', 'search-result');
     header.setAttribute('class', 'search-result-header');
     body.setAttribute('class', 'search-result-body');
@@ -363,7 +363,7 @@ function createResultElement(title, description) {
     header.innerHTML = title;
     body.innerHTML = description;
 
-    // lagger in element i foralder
+    // lagg in element i foralder
     article.appendChild(header);
     article.appendChild(body);
     li.appendChild(article);
@@ -379,17 +379,18 @@ function createResultElement(title, description) {
 function findResult(query) {
     const results =[];
     RESULTS.forEach(function(event){
-        if(event.title.includes(query) || event.description.includes(query)){
+        const titleLower = (event.title.toLowerCase())
+        if(event.title.includes(query) || titleLower.includes(query) || event.description.includes(query)){
             results.push(event);
         }
     });
     return results;
-    console.log("You searched for: ", query, "But this function is not implemented.");
 }
 
 inputField.addEventListener("keyup", function(event){
     // search for results
-    const results = findResult(event.target.value);
+    const searchLower = (event.target.value.toLowerCase())
+    const results = findResult(searchLower);
     
     // clear previous results
     resultsArea.innerHTML = '';
