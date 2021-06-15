@@ -380,7 +380,8 @@ function findResult(query) {
     const results =[];
     RESULTS.forEach(function(event){
         const titleLower = (event.title.toLowerCase())
-        if(event.title.includes(query) || titleLower.includes(query) || event.description.includes(query)){
+        const descriptionLower = (event.description.toLowerCase())
+        if(titleLower.includes(query) || descriptionLower.includes(query)){
             results.push(event);
         }
     });
